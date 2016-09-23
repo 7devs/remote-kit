@@ -1,26 +1,27 @@
 {
-  "name": "remote-kit",
-  "version": "1.0.0",
-  "description": "7devs Remote Kit",
-  "main": "remote-kit.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/7devs/remote-kit.git"
-  },
-  "keywords": [
-    "remote"
-  ],
-  "author": "Seven Yu",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/7devs/remote-kit/issues"
-  },
-  "homepage": "https://github.com/7devs/remote-kit#readme",
-  "dependencies": {
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0"
-  }
+    "name": "remote-kit",
+    "version": "1.0.0",
+    "description": "7devs Remote Kit",
+    "main": "remote-kit.js",
+    "scripts": {
+        "start": "node remote-kit.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/7devs/remote-kit.git"
+    },
+    "keywords": [
+        "remote"
+    ],
+    "author": "Seven Yu",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/7devs/remote-kit/issues"
+    },
+    "homepage": "https://github.com/7devs/remote-kit#readme",
+    "dependencies": {
+        "body-parser": "^1.15.2",
+        "express": "^4.14.0"
+    }
 }

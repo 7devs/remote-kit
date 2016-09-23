@@ -55,11 +55,13 @@
             <input id="url" type="text" />
             <br />
             <input id="btnCreate" type="button" value="创建项目" />
+            <input id="btnStart" type="button" value="启动项目" />
             <input id="btnUpdate" type="button" value="更新项目" />
         </form>
         <pre id="infobox">#&gt;</pre>
         <script>
             var bc = $('#btnCreate'),
+                bs = $('#btnStart'),
                 bu = $('#btnUpdate'),
                 ib = $('#infobox'),
                 port, url;
@@ -70,6 +72,15 @@
                 ajax('/exec/project', 'POST', {
                     port: port,
                     url: url
+                }, function(data) {
+                    ib.html(data);
+                });
+            });
+            bs.on('click', function(evt) {
+                ib.html('Running...');
+                port = $('#port').val();
+                ajax('/exec/project', 'PATCH', {
+                    port: port
                 }, function(data) {
                     ib.html(data);
                 });
