@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>7devs Remote Kit</title>
+        <meta charset='utf-8' />
+        <script src="script/jquery-3.1.1.min.js"></script>
+        <style>
+            * {
+                font-family: "courier new";
+            }
+            form {
+                line-height: 210%;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            select, input {
+                font-size: 1em;
+            }
+            pre {
+                padding: 5px;
+                color: green;
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Remote Kit</h1>
+        <form action="">
+            port:
+            <select id="port">
+                <option value="8001">8001</option>
+                <option value="8002">8002</option>
+                <option value="8003">8003</option>
+                <option value="8004">8004</option>
+                <option value="8005">8005</option>
+                <option value="8006">8006</option>
+                <option value="8007">8007</option>
+                <option value="8008">8008</option>
+                <option value="8009">8009</option>
+                <option value="8010">8010</option>
+                <option value="8011">8011</option>
+                <option value="8012">8012</option>
+                <option value="8013">8013</option>
+                <option value="8014">8014</option>
+                <option value="8015">8015</option>
+                <option value="8016">8016</option>
+                <option value="8017">8017</option>
+                <option value="8018">8018</option>
+                <option value="8019">8019</option>
+                <option value="8777">8777</option>
+            </select>
+            <br />
+            url:
+            <input id="url" type="text" />
+            <br />
+            <input id="btnCreate" type="button" value="创建项目" />
+            <input id="btnUpdate" type="button" value="更新项目" />
+        </form>
+        <pre id="infobox">#&gt;</pre>
+        <script>
+            var bc = $('#btnCreate'),
+                bu = $('#btnUpdate'),
+                ib = $('#infobox'),
+                port, url;
+            bc.on('click', function(evt) {
+                ib.html('Running...');
+                port = $('#port').val();
+                url = $('#url').val();
+                ajax('/exec/project', 'POST', {
+                    port: port,
+                    url: url
+                }, function(data) {
+                    ib.html(data);
+                });
+            });
+            bu.on('click', function(evt) {
+                ib.html('Running...');
+                port = $('#port').val();
+                ajax('/exec/project', 'PUT', {
+                    port: port
+                }, function(data) {
+                    ib.html(data);
+                });
+            });
+
+            function ajax(url, method, data, cb) {
+                $.ajax({
+                    url: url,
+                    method: method,
+                    dataType: 'json',
+                    data: data,
+                    success: cb
+                })
+            }
+        </script>
+    </body>
+</html>
