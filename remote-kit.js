@@ -1,7 +1,11 @@
 var express = require('express'),
     bdp = require('body-parser'),
+    path = require('path'),
     app = express(),
     port = 8999;
+
+app.set('views', path.join(__dirname, 'lib/views'));
+app.set('view engine', 'ejs');
 
 app.use(bdp.urlencoded({
     extended: false
@@ -15,7 +19,7 @@ app.use(express.static('static', {
 app.use('/exec', require('./lib/routers/exec.js'));
 
 app.use('/*', function(req, res, next) {
-    res.status(404).send('NOT FOUND.');
+    res.render('index');
 });
 
 app.listen(port, function(err) {
