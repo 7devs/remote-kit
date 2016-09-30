@@ -18,8 +18,12 @@ app.use(express.static('static', {
 
 app.use('/exec', require('./lib/routers/exec.js'));
 
-app.use('/*', function(req, res, next) {
-    res.render('index');
+app.use('/', function(req, res, next) {
+    if (req.path === '/') {
+        res.render('index');
+    } else {
+        res.status(404).end();
+    }
 });
 
 app.listen(port, function(err) {
